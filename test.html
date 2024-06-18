@@ -1,0 +1,22 @@
+<html>
+<head>
+  <script src="https://unpkg.com/vue"></script>
+  <script src="https://unpkg.com/vue-cal"></script>
+  <link href="https://unpkg.com/vue-cal/dist/vuecal.css" rel="stylesheet">
+</head>
+
+<body>
+<div id="app">
+  <vue-cal selected-date="2019-07-20" style="height: 90vh" active-view="month" :disable-views="['years', 'year']" events-on-month-view="short" :time-from="0 * 60" :time-to="24 * 60" :events="events"><template v-slot:title="{ title, view }">{{ view.startDate.getFullYear() }}-{{ (view.startDate.getMonth() + 1) | addZero }}{{ view.startDate.getMonth() + 1 }}<span v-if="view.id === 'day'">-{{ view.startDate.getDate() | addZero }}{{ view.startDate.getDate() }}</span></template><template v-slot:no-event=""></template><template v-slot:event="{ event, view }">
+          <div class="boxevent">
+              <div class="vuecal__event-title" v-if="view === 'month'">{{event.title}}</div>
+              <div class="vuecal__event-title" v-else-if="view === 'week'">{{event.title}}</div><span v-else="v-else">{{event.title}}{{view}}</span>
+          </div>
+      </template></vue-cal>
+</div><a href="https://antoniandre.github.io/vue-cal" target="_blank">Documentation @ //antoniandre.github.io/vue-cal</a>
+
+<script src="/js/test.js"></script>
+
+</body>
+
+</html>
